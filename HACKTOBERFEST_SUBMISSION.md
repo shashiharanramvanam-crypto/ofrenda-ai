@@ -146,6 +146,16 @@ Día de los Muertos is traditionally held in candlelit rooms, quiet courtyards, 
 
 ---
 
+## My Agent Session
+
+Judges can inspect the entire AI pair-programming and build trajectory behind Ofrenda AI right here:
+
+{% agent_session building-ofrenda-ai-local-first-sacred-altar-seance-powered-by-gemma-2-f1izne %}
+
+*(Direct link: [dev.to/agent_sessions/building-ofrenda-ai-local-first-sacred-altar-seance-powered-by-gemma-2-f1izne](https://dev.to/agent_sessions/building-ofrenda-ai-local-first-sacred-altar-seance-powered-by-gemma-2-f1izne))*
+
+---
+
 ## The Spirit of It
 
 During development, I tested the séance interface with an altar dedicated to **Alan Turing**. I sat in my darkened room with only the laptop screen and a single candle lit. 
