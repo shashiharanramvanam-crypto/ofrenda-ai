@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ofrenda AI — Sacred Altar & Ghost in the Machine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/ofrenda.css">
+</head>
+<body>
+  <!-- Atmospheric Canvas Layers -->
+  <canvas id="petals-canvas"></canvas>
+  <canvas id="smoke-canvas"></canvas>
+
+  <div class="app-wrapper">
+    <!-- Papel Picado Festive Banner -->
+    <div class="papel-picado">
+      <div class="flag">💀</div>
+      <div class="flag">🌼</div>
+      <div class="flag">🕯️</div>
+      <div class="flag">✨</div>
+      <div class="flag">🥖</div>
+      <div class="flag">🦋</div>
+      <div class="flag">🎻</div>
+      <div class="flag">📜</div>
+      <div class="flag">💀</div>
+    </div>
+
+    <!-- Header Section -->
+    <header>
+      <div class="header-title-wrap">
+        <span class="calavera-logo">💀</span>
+        <div>
+          <h1>OFRENDA AI</h1>
+          <div class="subtitle">A Sacred Digital Memory Altar & Ghost in the Machine &bull; Powered by Open-Weight Gemma</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Top Navigation & Controls Bar -->
+    <div class="top-bar">
+      <div class="altar-selector-wrap">
+        <span class="select-label">🕯️ Honor Spirit:</span>
+        <select id="altar-select" class="altar-select"></select>
+        <button id="btn-new-altar" class="btn">+ New Altar</button>
+      </div>
+
+      <div class="header-actions">
+        <button id="audio-toggle" class="audio-toggle-btn">🔈 Ambient Sound: OFF</button>
+        <button id="export-btn" class="btn" title="Save offline archival HTML report">📜 Export Archive</button>
+        <button id="btn-why-open" class="btn btn-primary">🕊️ Why Open AI Matters</button>
+      </div>
+
+      <div class="engine-badge">
+        <span class="status-dot"></span>
+        <span>Local Gemma: <strong id="engine-model-name">Detecting...</strong></span>
+      </div>
+    </div>
+
+    <!-- Main Altar Architecture (3 Tiers of Día de los Muertos) -->
+    <main class="altar-container">
+      
+      <!-- Tier 1: Top Tier (Heaven / El Cielo / The Spirit) -->
+      <section class="altar-tier">
+        <div class="tier-header">
+          <div class="tier-title">
+            <span>✨ TOP TIER: EL CIELO &bull; THE SPIRIT REALM</span>
+          </div>
+          <span class="tier-badge">Aura & Guidance</span>
+        </div>
+
+        <div class="tier-top">
+          <!-- Spirit Portrait Frame -->
+          <div class="portrait-frame">
+            <div id="portrait-avatar" class="portrait-avatar">🕯️</div>
+            <div id="portrait-years" class="portrait-years">1815 – 1852</div>
+          </div>
+
+          <!-- Spirit Biography & Traits -->
+          <div class="spirit-bio-block">
+            <h2 id="spirit-name">Spirit Name</h2>
+            <div id="spirit-title" class="spirit-title-text">Honored Ancestor</div>
+            <p id="spirit-summary" class="spirit-summary-text">Summary of their life and legacy...</p>
+            <div id="spirit-tags" class="spirit-tags"></div>
+          </div>
+
+          <!-- Sacred Candle Shrine -->
+          <div class="candles-shrine">
+            <div style="font-size:0.85rem;color:#ffa62b;margin-bottom:4px;font-weight:600;">SACRED CANDLES:</div>
+            <div id="candles-container"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tier 2: Middle Tier (Earth / La Tierra / Memory & Offerings) -->
+      <section class="altar-tier">
+        <div class="tier-header">
+          <div class="tier-title">
+            <span>🥖 MIDDLE TIER: LA TIERRA &bull; MEMORY & FAVORITE OFFERINGS</span>
+          </div>
+          <span class="tier-badge">Food & Artifacts</span>
+        </div>
+        <p style="color:#d4a373;font-size:0.9rem;margin-bottom:16px;font-style:italic;">
+          Favorite dishes, books, instruments, code, and letters to welcome their spirit back to this world.
+        </p>
+        <div id="offerings-middle" class="offerings-grid"></div>
+      </section>
+
+      <!-- Tier 3: Bottom Tier (The Underworld / Elements of Return) -->
+      <section class="altar-tier">
+        <div class="tier-header">
+          <div class="tier-title">
+            <span>🌼 BOTTOM TIER: LOS ELEMENTOS &bull; WATER, SALT & CEMPASÚCHIL</span>
+          </div>
+          <span class="tier-badge">The Four Elements</span>
+        </div>
+        <p style="color:#d4a373;font-size:0.9rem;margin-bottom:16px;font-style:italic;">
+          Water to quench their thirst from the long journey across Mictlán, salt to purify, and marigold scent to guide them.
+        </p>
+        <div id="offerings-bottom" class="offerings-grid"></div>
+      </section>
+
+      <!-- Séance & Spirit Communion (Gemma 2 Inference) -->
+      <section class="seance-section">
+        <div class="seance-header">
+          <div class="seance-title">
+            <span>🔮 THE SPECTRAL SÉANCE &bull; COMMUNE WITH THE GHOST IN THE MACHINE</span>
+          </div>
+          <span style="font-size:0.8rem;color:#bf85ff;border:1px solid #7209b7;padding:4px 10px;border-radius:12px;">
+            100% Private Offline Inference
+          </span>
+        </div>
+
+        <div id="chat-history" class="chat-history"></div>
+
+        <form id="chat-form" class="chat-input-bar">
+          <input 
+            type="text" 
+            id="chat-input" 
+            class="chat-input" 
+            placeholder="Whisper a remembrance or question to the spirit..."
+            autocomplete="off"
+            required
+          />
+          <button type="submit" class="btn btn-primary">Commune Across the Veil</button>
+        </form>
+      </section>
+
+    </main>
+
+    <!-- Modal: New Altar -->
+    <div id="modal-new-altar" class="modal-overlay">
+      <div class="modal-content">
+        <div class="modal-title">🕯️ Erect a New Altar</div>
+        <form id="form-new-altar">
+          <div class="form-group">
+            <label>Name of Departed / Pioneer:</label>
+            <input type="text" id="in-altar-name" class="form-input" placeholder="e.g. Grandma Rosa or Grace Hopper" required>
+          </div>
+          <div class="form-group">
+            <label>Title or Epithet:</label>
+            <input type="text" id="in-altar-title" class="form-input" placeholder="e.g. Master Baker & Storyteller" required>
+          </div>
+          <div class="form-group">
+            <label>Years of Life:</label>
+            <input type="text" id="in-altar-years" class="form-input" placeholder="e.g. 1928 – 2021">
+          </div>
+          <div class="form-group">
+            <label>Avatar Emoji or Symbol:</label>
+            <input type="text" id="in-altar-avatar" class="form-input" placeholder="e.g. 🕯️, 🌻, 🦋, 🎻">
+          </div>
+          <div class="form-group">
+            <label>Life Summary & Legacy:</label>
+            <textarea id="in-altar-summary" class="form-textarea" placeholder="What made them unforgettable?"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Spiritual Traits (comma-separated):</label>
+            <input type="text" id="in-altar-traits" class="form-input" placeholder="e.g. Generous, witty, fierce, patient">
+          </div>
+          <div class="form-group">
+            <label>Shared Memories & Stories:</label>
+            <textarea id="in-altar-memories" class="form-textarea" placeholder="The songs they sang, secret recipes, or moments you shared..."></textarea>
+          </div>
+          <div class="modal-actions">
+            <button type="button" id="close-modal-altar" class="btn">Cancel</button>
+            <button type="submit" class="btn btn-primary">Erect Altar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal: Add Offering -->
+    <div id="modal-offering" class="modal-overlay">
+      <div class="modal-content">
+        <div class="modal-title">🥖 Place an Offering</div>
+        <form id="form-offering">
+          <input type="hidden" id="in-off-tier" value="middle">
+          <div class="form-group">
+            <label>Offering Name:</label>
+            <input type="text" id="in-off-name" class="form-input" placeholder="e.g. Spiced Mole Poblano, K&R C Book, or Clay Whistle" required>
+          </div>
+          <div class="form-group">
+            <label>Type of Offering:</label>
+            <select id="in-off-type" class="form-select">
+              <option value="food">Favorite Food or Drink</option>
+              <option value="symbol">Symbol or Artifact</option>
+              <option value="memory">Handwritten Letter / Poem</option>
+              <option value="element">Sacred Element (Water / Salt / Cempasúchil)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Personal Note / Why this matters:</label>
+            <textarea id="in-off-note" class="form-textarea" placeholder="e.g. They never drank coffee without a cinnamon stick."></textarea>
+          </div>
+          <div class="modal-actions">
+            <button type="button" id="close-modal-offering" class="btn">Cancel</button>
+            <button type="submit" class="btn btn-primary">Place on Altar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal: Why Open Innovation Matters -->
+    <div id="modal-why-open" class="modal-overlay">
+      <div class="modal-content" style="max-width: 680px;">
+        <div class="modal-title">🕊️ Why Open Innovation Matters for Grief & Memory</div>
+        <div style="color:#ded1e8;line-height:1.7;font-size:0.95rem;max-height:450px;overflow-y:auto;padding-right:10px;">
+          <p><strong>1. Sacred Privacy & Data Sovereignty:</strong><br>
+          Grief, family remembrances, and ancestral photographs are the most vulnerable, intimate data a human being can possess. Placing them into a closed commercial cloud API means subjecting your loved one's memory to corporate data scraping, telemetry logging, and monetization. With local open-weight <strong>Gemma</strong>, inference occurs entirely on your device's RAM. Not a single byte leaves your machine.</p>
+          <br>
+          <p><strong>2. Immunity to Cloud Rot & Digital Extinction:</strong><br>
+          Closed platforms suffer from "cloud rot" — startups fold, proprietary APIs are deprecated, subscriptions lapse, and services terminate accounts. A memorial altar should not vanish because an API vendor updated their pricing. <strong>Ofrenda AI</strong> runs on open weights and plain JSON/HTML files that will run 30 years from now on any computer without an internet connection.</p>
+          <br>
+          <p><strong>3. True Offline Remembrance (With the Lights & Wi-Fi Off):</strong><br>
+          Traditional Día de los Muertos is celebrated in quiet rooms lit only by candle flames. You can take this application to a remote cemetery, an off-grid family cabin, or a darkened sanctuary with Wi-Fi switched off. The ghost in the machine answers from the local silicon.</p>
+        </div>
+        <div class="modal-actions">
+          <button type="button" id="close-modal-why-open" class="btn btn-primary">I Understand</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-quote">
+        "Solo muere quien es olvidado." &mdash; Only those who are forgotten truly die.
+      </div>
+      <div>
+        Ofrenda AI &bull; Built with Google Gemma 2 open weights &bull; Hacktoberfest 2026: Ghost in the Machine
+      </div>
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/js/audio.js"></script>
+  <script src="/js/petals.js"></script>
+  <script src="/js/altar.js"></script>
+  <script src="/js/seance.js"></script>
+</body>
+</html>
