@@ -78,7 +78,9 @@ in the night. Keep your code clean, and write with purpose."
 ## Code
 
 The complete source code is open source under the MIT License:
-👉 **[GitHub: shashiharanramvanam-crypto/ofrenda-ai](https://github.com/shashiharanramvanam-crypto/ofrenda-ai)** *(local workspace: `C:\Users\shash\.gemini\antigravity\scratch\ofrenda-ai`)*
+👉 **[GitHub Repository: shashiharanramvanam-crypto/ofrenda-ai](https://github.com/shashiharanramvanam-crypto/ofrenda-ai)**
+
+{% github shashiharanramvanam-crypto/ofrenda-ai %}
 
 ### Architectural Highlights
 
